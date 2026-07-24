@@ -1,8 +1,0 @@
-module Noon
-linktarget noonplugin
-optional plugin noonplugin
-classname NoonPlugin
-typeinfo noon.qmltypes
-prefer :/qt/qml/Noon/
-depends QtQuick
-

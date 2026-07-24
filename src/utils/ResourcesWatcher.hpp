@@ -17,7 +17,9 @@
 #include <xf86drm.h>
 #include <xf86drmMode.h>
 #include <drm/i915_drm.h>
+#ifdef NVIDIA
 #include <nvml.h>
+#endif
 
 class ResourcesWatcher : public QObject
 {
@@ -30,7 +32,9 @@ public:
     explicit ResourcesWatcher(QObject *parent = nullptr)
         : QObject(parent), m_prevTotal(0), m_prevIdle(0)
     {
+#ifdef NVIDIA
         nvmlInit();
+#endif
         m_updateTimer = new QTimer(this);
         connect(m_updateTimer, &QTimer::timeout, this, &ResourcesWatcher::updateStats);
         m_updateTimer->start(2000);
@@ -41,7 +45,11 @@ public:
         updateStats();
     }
 
-    ~ResourcesWatcher() override { nvmlShutdown(); }
+    ~ResourcesWatcher() override {
+#ifdef NVIDIA
+        nvmlShutdown();
+#endif
+    }
 
     QVariantMap stats() const { return m_stats; }
 
@@ -200,12 +208,15 @@ private:
     QVariantList readGpuStats()
     {
         QVariantList gpus;
+#ifdef NVIDIA
         readNvidiaGpuStats(gpus);
+#endif
         readAmdGpuStats(gpus);
         readIntelGpuStats(gpus);
         return gpus;
     }
 
+#ifdef NVIDIA
     void readNvidiaGpuStats(QVariantList &gpus)
     {
         unsigned int deviceCount = 0;
@@ -238,6 +249,7 @@ private:
             }
         }
     }
+#endif
 
     void readAmdGpuStats(QVariantList &gpus)
     {

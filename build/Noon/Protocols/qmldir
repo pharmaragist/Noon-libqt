@@ -1,7 +1,0 @@
-module Noon.Protocols
-linktarget noon_protocolsplugin
-optional plugin noon_protocolsplugin
-classname Noon_ProtocolsPlugin
-typeinfo noon_protocols.qmltypes
-prefer :/qt/qml/Noon/Protocols/
-

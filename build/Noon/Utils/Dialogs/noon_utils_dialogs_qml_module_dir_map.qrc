@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/">
-    <file alias="/qt/qml/Noon/Utils/Dialogs">/home/pharmaracist/Projects/Noon-libqt/build/Noon/Utils/Dialogs</file>
-
-  </qresource>
-</RCC>

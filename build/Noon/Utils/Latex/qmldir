@@ -1,8 +1,0 @@
-module Noon.Utils.Latex
-linktarget noon_utils_latexplugin
-optional plugin noon_utils_latexplugin
-classname Noon_Utils_LatexPlugin
-typeinfo noon_utils_latex.qmltypes
-prefer :/qt/qml/Noon/Utils/Latex/
-depends QtQuick
-

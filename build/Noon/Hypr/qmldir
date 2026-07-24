@@ -1,8 +1,0 @@
-module Noon.Hypr
-linktarget noon_hyprplugin
-optional plugin noon_hyprplugin
-classname Noon_HyprPlugin
-typeinfo noon_hypr.qmltypes
-prefer :/qt/qml/Noon/Hypr/
-depends QtQuick
-

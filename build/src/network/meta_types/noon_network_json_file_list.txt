@@ -1,1 +1,0 @@
-/home/pharmaracist/Projects/Noon-libqt/build/src/network/noon_network_autogen/include/../EWIEGA46WW/moc_NetworkManager.cpp.json

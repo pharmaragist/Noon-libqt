@@ -15,7 +15,7 @@ noon_setup(noon_utils Noon.Utils
     PACKAGES
         MpvQt
     PKG_CHECK
-        DEPS libdrm nvidia-ml sdl2
+        DEPS libdrm sdl2
     LINK
         Qt6::Quick
         Qt6::Sql
@@ -27,6 +27,13 @@ noon_setup(noon_utils Noon.Utils
     INCLUDES
         ${CMAKE_CURRENT_SOURCE_DIR}/../lib/qtqr/src
 )
+
+if(NVIDIA)
+    find_package(PkgConfig REQUIRED)
+    pkg_check_modules(NVML REQUIRED IMPORTED_TARGET GLOBAL nvidia-ml)
+    target_link_libraries(noon_utils PRIVATE PkgConfig::NVML)
+    target_compile_definitions(noon_utils PRIVATE NVIDIA)
+endif()
 
 add_subdirectory(latex)
 add_subdirectory(dialogs)

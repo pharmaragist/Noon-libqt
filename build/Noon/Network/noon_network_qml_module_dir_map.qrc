@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/">
-    <file alias="/qt/qml/Noon/Network">/home/pharmaracist/Projects/Noon-libqt/build/Noon/Network</file>
-
-  </qresource>
-</RCC>
