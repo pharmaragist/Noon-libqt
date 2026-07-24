@@ -1,0 +1,12 @@
+-I
+/home/pharmaracist/Projects/Noon-libqt/build
+-I
+/home/pharmaracist/Projects/Noon-libqt/build/Noon/Utils/Dialogs
+-I
+/home/pharmaracist/Projects/Noon-libqt/build/src/utils/dialogs
+-I
+/usr/lib64/qt6/qml
+--resource
+/home/pharmaracist/Projects/Noon-libqt/build/src/utils/dialogs/.qt/rcc/qmake_Noon_Utils_Dialogs.qrc
+--module
+Noon.Utils.Dialogs

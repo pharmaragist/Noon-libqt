@@ -1,0 +1,2 @@
+/usr/bin/ar qc libqtqr.a CMakeFiles/qtqr.dir/qtqr_autogen/mocs_compilation.cpp.o CMakeFiles/qtqr.dir/src/QrCodeGenerator.cpp.o CMakeFiles/qtqr.dir/src/qrcodegen/qrcodegen.cpp.o
+/usr/bin/ranlib libqtqr.a

@@ -1,0 +1,8 @@
+module Noon.Devices
+linktarget noon_devicesplugin
+optional plugin noon_devicesplugin
+classname Noon_DevicesPlugin
+typeinfo noon_devices.qmltypes
+prefer :/qt/qml/Noon/Devices/
+depends QtQuick
+

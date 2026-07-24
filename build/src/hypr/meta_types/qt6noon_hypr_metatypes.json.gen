@@ -1,0 +1,558 @@
+[
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "auto"
+                    }
+                ],
+                "className": "HyprBridge",
+                "lineNumber": 13,
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 18,
+                        "name": "windowList",
+                        "notify": "windowListChanged",
+                        "override": false,
+                        "read": "windowList",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QJsonArray",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 19,
+                        "name": "windowByAddress",
+                        "notify": "windowByAddressChanged",
+                        "override": false,
+                        "read": "windowByAddress",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QJsonObject",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 20,
+                        "name": "workspaces",
+                        "notify": "workspacesChanged",
+                        "override": false,
+                        "read": "workspaces",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QJsonArray",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 21,
+                        "name": "workspaceById",
+                        "notify": "workspaceByIdChanged",
+                        "override": false,
+                        "read": "workspaceById",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QJsonObject",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 22,
+                        "name": "activeWorkspace",
+                        "notify": "activeWorkspaceChanged",
+                        "override": false,
+                        "read": "activeWorkspace",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QJsonObject",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 5,
+                        "lineNumber": 23,
+                        "name": "monitors",
+                        "notify": "monitorsChanged",
+                        "override": false,
+                        "read": "monitors",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QJsonArray",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 6,
+                        "lineNumber": 24,
+                        "name": "currentKeyboardLayout",
+                        "notify": "currentKeyboardLayoutChanged",
+                        "override": false,
+                        "read": "currentKeyboardLayout",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "HyprBridge",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 61,
+                        "name": "windowListChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 62,
+                        "name": "windowByAddressChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 63,
+                        "name": "workspacesChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "lineNumber": 64,
+                        "name": "workspaceByIdChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "lineNumber": 65,
+                        "name": "activeWorkspaceChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 5,
+                        "lineNumber": 66,
+                        "name": "monitorsChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 6,
+                        "lineNumber": 67,
+                        "name": "currentKeyboardLayoutChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "className",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "title",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 7,
+                        "lineNumber": 68,
+                        "name": "activeWindowChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "HyprBridge.hpp",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "auto"
+                    }
+                ],
+                "className": "HyprParser",
+                "lineNumber": 14,
+                "methods": [
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 47,
+                        "name": "reload",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "lineNumber": 60,
+                        "name": "forceSave",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 17,
+                        "name": "path",
+                        "notify": "pathChanged",
+                        "override": false,
+                        "read": "path",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setPath"
+                    },
+                    {
+                        "constant": true,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 18,
+                        "name": "variables",
+                        "override": false,
+                        "read": "variables",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QQmlPropertyMap*",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 19,
+                        "name": "isLoaded",
+                        "notify": "isLoadedChanged",
+                        "override": false,
+                        "read": "isLoaded",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "HyprParser",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 63,
+                        "name": "pathChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 64,
+                        "name": "isLoadedChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "HyprParser.hpp",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "auto"
+                    }
+                ],
+                "className": "ScreenTimeManager",
+                "lineNumber": 11,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "parent",
+                                "type": "QObject*"
+                            },
+                            {
+                                "name": "dbPath",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 5,
+                        "lineNumber": 36,
+                        "name": "init",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "parent",
+                                "type": "QObject*"
+                            }
+                        ],
+                        "index": 6,
+                        "isCloned": true,
+                        "lineNumber": 36,
+                        "name": "init",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "date",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 7,
+                        "isConst": true,
+                        "lineNumber": 38,
+                        "name": "getDay",
+                        "returnType": "QJsonArray"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "date",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 8,
+                        "isConst": true,
+                        "lineNumber": 39,
+                        "name": "getDayTotals",
+                        "returnType": "QJsonArray"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "date",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "fromSec",
+                                "type": "int"
+                            },
+                            {
+                                "name": "toSec",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 9,
+                        "isConst": true,
+                        "lineNumber": 40,
+                        "name": "getDayTimeline",
+                        "returnType": "QJsonArray"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 16,
+                        "name": "dbPath",
+                        "notify": "dbPathChanged",
+                        "override": false,
+                        "read": "dbPath",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setDbPath"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 17,
+                        "name": "bridge",
+                        "notify": "bridgeChanged",
+                        "override": false,
+                        "read": "bridge",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "HyprBridge*",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setBridge"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 18,
+                        "name": "appTimes",
+                        "notify": "appTimesChanged",
+                        "override": false,
+                        "read": "appTimes",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QJsonArray",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 19,
+                        "name": "sessions",
+                        "notify": "sessionsChanged",
+                        "override": false,
+                        "read": "sessions",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QJsonArray",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 20,
+                        "name": "saveInterval",
+                        "notify": "saveIntervalChanged",
+                        "override": false,
+                        "read": "saveInterval",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setSaveInterval"
+                    }
+                ],
+                "qualifiedClassName": "ScreenTimeManager",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 43,
+                        "name": "appTimesChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 44,
+                        "name": "sessionsChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 45,
+                        "name": "bridgeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "lineNumber": 46,
+                        "name": "dbPathChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "lineNumber": 47,
+                        "name": "saveIntervalChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "ScreenTimeManager.hpp",
+        "outputRevision": 69
+    }
+]

@@ -1,0 +1,169 @@
+libnoon_utils_latex.so: \
+  /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crti.o \
+  /usr/lib/gcc/x86_64-redhat-linux/16/crtbeginS.o \
+  CMakeFiles/noon_utils_latex.dir/noon_utils_latex_autogen/mocs_compilation.cpp.o \
+  CMakeFiles/noon_utils_latex.dir/noon_utils_latex_qmltyperegistrations.cpp.o \
+  CMakeFiles/noon_utils_latex.dir/.qt/rcc/qrc_qmake_Noon_Utils_Latex.cpp.o \
+  /usr/lib64/libQt6Quick.so.6.11.1 \
+  /usr/lib64/libQt6Concurrent.so.6.11.1 \
+  /usr/lib64/libQt6OpenGL.so.6.11.1 \
+  /usr/lib64/libQt6Gui.so.6.11.1 \
+  /usr/lib64/libGLX.so \
+  /usr/lib64/libOpenGL.so \
+  /usr/lib64/libQt6Qml.so.6.11.1 \
+  /usr/lib64/libQt6Network.so.6.11.1 \
+  /usr/lib64/libQt6Core.so.6.11.1 \
+  /usr/local/lib64/libclatexmath.so \
+  /usr/lib64/libpangomm-1.4.so \
+  /usr/lib64/libglibmm-2.4.so \
+  /usr/lib64/libcairomm-1.0.so \
+  /usr/lib64/libsigc-2.0.so \
+  /usr/lib64/libpangocairo-1.0.so \
+  /usr/lib64/libpango-1.0.so \
+  /usr/lib64/libcairo.so \
+  /usr/lib64/libharfbuzz.so \
+  /usr/lib64/libgobject-2.0.so \
+  /usr/lib64/libglib-2.0.so \
+  /usr/lib/gcc/x86_64-redhat-linux/16/libstdc++.so \
+  /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/libm.so \
+  /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/libm.so \
+  /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/libm.so \
+  /lib64/libm.so.6 \
+  /lib64/libmvec.so.1 \
+  /usr/lib/gcc/x86_64-redhat-linux/16/libgcc_s.so \
+  /usr/lib/gcc/x86_64-redhat-linux/16/libgcc_s.so \
+  /usr/lib/gcc/x86_64-redhat-linux/16/libgcc_s.so \
+  /lib64/libgcc_s.so.1 \
+  /usr/lib/gcc/x86_64-redhat-linux/16/libgcc.a \
+  /usr/lib/gcc/x86_64-redhat-linux/16/libatomic_asneeded.so \
+  /usr/lib/gcc/x86_64-redhat-linux/16/libatomic_asneeded.so \
+  /usr/lib/gcc/x86_64-redhat-linux/16/libatomic_asneeded.so \
+  /usr/lib/gcc/x86_64-redhat-linux/16/libatomic.so \
+  /usr/lib/gcc/x86_64-redhat-linux/16/libatomic.so \
+  /usr/lib/gcc/x86_64-redhat-linux/16/libatomic.so \
+  /usr/lib64/libatomic.so.1.2.0 \
+  /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/libc.so \
+  /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/libc.so \
+  /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/libc.so \
+  /lib64/libc.so.6 \
+  /usr/lib64/libc_nonshared.a \
+  /lib64/ld-linux-x86-64.so.2 \
+  /usr/lib/gcc/x86_64-redhat-linux/16/libgcc_s.so \
+  /usr/lib/gcc/x86_64-redhat-linux/16/libgcc_s.so \
+  /usr/lib/gcc/x86_64-redhat-linux/16/libgcc_s.so \
+  /lib64/libgcc_s.so.1 \
+  /usr/lib/gcc/x86_64-redhat-linux/16/libgcc.a \
+  /usr/lib/gcc/x86_64-redhat-linux/16/crtendS.o \
+  /usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crtn.o
+
+/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crti.o:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/crtbeginS.o:
+
+CMakeFiles/noon_utils_latex.dir/noon_utils_latex_autogen/mocs_compilation.cpp.o:
+
+CMakeFiles/noon_utils_latex.dir/noon_utils_latex_qmltyperegistrations.cpp.o:
+
+CMakeFiles/noon_utils_latex.dir/.qt/rcc/qrc_qmake_Noon_Utils_Latex.cpp.o:
+
+/usr/lib64/libQt6Quick.so.6.11.1:
+
+/usr/lib64/libQt6Concurrent.so.6.11.1:
+
+/usr/lib64/libQt6OpenGL.so.6.11.1:
+
+/usr/lib64/libQt6Gui.so.6.11.1:
+
+/usr/lib64/libGLX.so:
+
+/usr/lib64/libOpenGL.so:
+
+/usr/lib64/libQt6Qml.so.6.11.1:
+
+/usr/lib64/libQt6Network.so.6.11.1:
+
+/usr/lib64/libQt6Core.so.6.11.1:
+
+/usr/local/lib64/libclatexmath.so:
+
+/usr/lib64/libpangomm-1.4.so:
+
+/usr/lib64/libglibmm-2.4.so:
+
+/usr/lib64/libcairomm-1.0.so:
+
+/usr/lib64/libsigc-2.0.so:
+
+/usr/lib64/libpangocairo-1.0.so:
+
+/usr/lib64/libpango-1.0.so:
+
+/usr/lib64/libcairo.so:
+
+/usr/lib64/libharfbuzz.so:
+
+/usr/lib64/libgobject-2.0.so:
+
+/usr/lib64/libglib-2.0.so:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/libstdc++.so:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/libm.so:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/libm.so:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/libm.so:
+
+/lib64/libm.so.6:
+
+/lib64/libmvec.so.1:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/libgcc_s.so:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/libgcc_s.so:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/libgcc_s.so:
+
+/lib64/libgcc_s.so.1:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/libgcc.a:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/libatomic_asneeded.so:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/libatomic_asneeded.so:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/libatomic_asneeded.so:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/libatomic.so:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/libatomic.so:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/libatomic.so:
+
+/usr/lib64/libatomic.so.1.2.0:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/libc.so:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/libc.so:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/libc.so:
+
+/lib64/libc.so.6:
+
+/usr/lib64/libc_nonshared.a:
+
+/lib64/ld-linux-x86-64.so.2:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/libgcc_s.so:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/libgcc_s.so:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/libgcc_s.so:
+
+/lib64/libgcc_s.so.1:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/libgcc.a:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/crtendS.o:
+
+/usr/lib/gcc/x86_64-redhat-linux/16/../../../../lib64/crtn.o:

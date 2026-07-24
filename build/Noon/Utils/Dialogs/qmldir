@@ -1,0 +1,8 @@
+module Noon.Utils.Dialogs
+linktarget noon_utils_dialogsplugin
+optional plugin noon_utils_dialogsplugin
+classname Noon_Utils_DialogsPlugin
+typeinfo noon_utils_dialogs.qmltypes
+prefer :/qt/qml/Noon/Utils/Dialogs/
+depends QtQuick
+

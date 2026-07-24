@@ -1,0 +1,8 @@
+module Noon.Network
+linktarget noon_networkplugin
+optional plugin noon_networkplugin
+classname Noon_NetworkPlugin
+typeinfo noon_network.qmltypes
+prefer :/qt/qml/Noon/Network/
+depends QtQuick
+

@@ -1,0 +1,13 @@
+--bare
+-I
+/home/pharmaracist/Projects/Noon-libqt/build
+-I
+/home/pharmaracist/Projects/Noon-libqt/build/Noon/Utils
+-I
+/home/pharmaracist/Projects/Noon-libqt/build/src/utils
+-I
+/usr/lib64/qt6/qml
+--resource
+/home/pharmaracist/Projects/Noon-libqt/build/src/utils/.qt/rcc/qmake_Noon_Utils.qrc
+--json
+/home/pharmaracist/Projects/Noon-libqt/build/noon_utils_qmllint.json

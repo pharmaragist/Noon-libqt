@@ -1,0 +1,13 @@
+--bare
+-I
+/home/pharmaracist/Projects/Noon-libqt/build
+-I
+/home/pharmaracist/Projects/Noon-libqt/build/Noon/Hypr
+-I
+/home/pharmaracist/Projects/Noon-libqt/build/src/hypr
+-I
+/usr/lib64/qt6/qml
+--resource
+/home/pharmaracist/Projects/Noon-libqt/build/src/hypr/.qt/rcc/qmake_Noon_Hypr.qrc
+--json
+/home/pharmaracist/Projects/Noon-libqt/build/noon_hypr_qmllint.json

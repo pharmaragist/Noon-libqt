@@ -1,0 +1,3 @@
+/home/pharmaracist/Projects/Noon-libqt/build/src/hypr/noon_hypr_autogen/include/../EWIEGA46WW/moc_HyprBridge.cpp.json
+/home/pharmaracist/Projects/Noon-libqt/build/src/hypr/noon_hypr_autogen/include/../EWIEGA46WW/moc_HyprParser.cpp.json
+/home/pharmaracist/Projects/Noon-libqt/build/src/hypr/noon_hypr_autogen/include/../EWIEGA46WW/moc_ScreenTimeManager.cpp.json

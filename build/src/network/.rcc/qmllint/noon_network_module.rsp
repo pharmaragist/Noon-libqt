@@ -1,0 +1,12 @@
+-I
+/home/pharmaracist/Projects/Noon-libqt/build
+-I
+/home/pharmaracist/Projects/Noon-libqt/build/Noon/Network
+-I
+/home/pharmaracist/Projects/Noon-libqt/build/src/network
+-I
+/usr/lib64/qt6/qml
+--resource
+/home/pharmaracist/Projects/Noon-libqt/build/src/network/.qt/rcc/qmake_Noon_Network.qrc
+--module
+Noon.Network

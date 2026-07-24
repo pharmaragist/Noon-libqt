@@ -1,0 +1,69 @@
+{
+    "classes": [
+        {
+            "classInfos": [
+                {
+                    "name": "QML.Element",
+                    "value": "auto"
+                }
+            ],
+            "className": "EnvManager",
+            "lineNumber": 10,
+            "object": true,
+            "properties": [
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 0,
+                    "lineNumber": 13,
+                    "name": "path",
+                    "notify": "pathChanged",
+                    "override": false,
+                    "read": "path",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QString",
+                    "user": false,
+                    "virtual": false,
+                    "write": "setPath"
+                },
+                {
+                    "constant": true,
+                    "designable": true,
+                    "final": false,
+                    "index": 1,
+                    "lineNumber": 14,
+                    "name": "data",
+                    "override": false,
+                    "read": "data",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QQmlPropertyMap*",
+                    "user": false,
+                    "virtual": false
+                }
+            ],
+            "qualifiedClassName": "EnvManager",
+            "signals": [
+                {
+                    "access": "public",
+                    "index": 0,
+                    "lineNumber": 38,
+                    "name": "pathChanged",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "EnvManager.hpp",
+    "outputRevision": 69
+}

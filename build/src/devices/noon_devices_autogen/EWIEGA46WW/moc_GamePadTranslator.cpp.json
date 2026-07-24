@@ -1,0 +1,926 @@
+{
+    "classes": [
+        {
+            "classInfos": [
+                {
+                    "name": "QML.Element",
+                    "value": "auto"
+                }
+            ],
+            "className": "GamePadTranslator",
+            "enums": [
+                {
+                    "isClass": true,
+                    "isFlag": false,
+                    "lineNumber": 12,
+                    "name": "Button",
+                    "values": [
+                        "FaceDown",
+                        "FaceRight",
+                        "FaceLeft",
+                        "FaceUp",
+                        "LB",
+                        "RB",
+                        "LS",
+                        "RS",
+                        "MenuStart",
+                        "MenuBack",
+                        "DUp",
+                        "DDown",
+                        "DLeft",
+                        "DRight",
+                        "ButtonUnknown"
+                    ]
+                },
+                {
+                    "isClass": true,
+                    "isFlag": false,
+                    "lineNumber": 21,
+                    "name": "Axis",
+                    "values": [
+                        "LX",
+                        "LY",
+                        "RX",
+                        "RY",
+                        "LT",
+                        "RT",
+                        "AxisUnknown"
+                    ]
+                }
+            ],
+            "lineNumber": 7,
+            "methods": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "i",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 42,
+                    "isConst": true,
+                    "lineNumber": 93,
+                    "name": "axisValue",
+                    "returnType": "float"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "i",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 43,
+                    "isConst": true,
+                    "lineNumber": 94,
+                    "name": "buttonValue",
+                    "returnType": "bool"
+                }
+            ],
+            "object": true,
+            "properties": [
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 0,
+                    "lineNumber": 27,
+                    "name": "deviceIndex",
+                    "notify": "deviceConnected",
+                    "override": false,
+                    "read": "deviceIndex",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "int",
+                    "user": false,
+                    "virtual": false,
+                    "write": "setDeviceIndex"
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 1,
+                    "lineNumber": 28,
+                    "name": "connected",
+                    "notify": "deviceConnected",
+                    "override": false,
+                    "read": "connected",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 2,
+                    "lineNumber": 29,
+                    "name": "name",
+                    "notify": "deviceConnected",
+                    "override": false,
+                    "read": "name",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QString",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 3,
+                    "lineNumber": 30,
+                    "name": "axisCount",
+                    "notify": "deviceConnected",
+                    "override": false,
+                    "read": "axisCount",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "int",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 4,
+                    "lineNumber": 31,
+                    "name": "buttonCount",
+                    "notify": "deviceConnected",
+                    "override": false,
+                    "read": "buttonCount",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "int",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 5,
+                    "lineNumber": 33,
+                    "name": "lx",
+                    "notify": "axisChanged",
+                    "override": false,
+                    "read": "lx",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "float",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 6,
+                    "lineNumber": 34,
+                    "name": "ly",
+                    "notify": "axisChanged",
+                    "override": false,
+                    "read": "ly",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "float",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 7,
+                    "lineNumber": 35,
+                    "name": "rx",
+                    "notify": "axisChanged",
+                    "override": false,
+                    "read": "rx",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "float",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 8,
+                    "lineNumber": 36,
+                    "name": "ry",
+                    "notify": "axisChanged",
+                    "override": false,
+                    "read": "ry",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "float",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 9,
+                    "lineNumber": 37,
+                    "name": "lt",
+                    "notify": "axisChanged",
+                    "override": false,
+                    "read": "lt",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "float",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 10,
+                    "lineNumber": 38,
+                    "name": "rt",
+                    "notify": "axisChanged",
+                    "override": false,
+                    "read": "rt",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "float",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 11,
+                    "lineNumber": 40,
+                    "name": "faceDown",
+                    "notify": "buttonChanged",
+                    "override": false,
+                    "read": "faceDown",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 12,
+                    "lineNumber": 41,
+                    "name": "faceRight",
+                    "notify": "buttonChanged",
+                    "override": false,
+                    "read": "faceRight",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 13,
+                    "lineNumber": 42,
+                    "name": "faceLeft",
+                    "notify": "buttonChanged",
+                    "override": false,
+                    "read": "faceLeft",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 14,
+                    "lineNumber": 43,
+                    "name": "faceUp",
+                    "notify": "buttonChanged",
+                    "override": false,
+                    "read": "faceUp",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 15,
+                    "lineNumber": 44,
+                    "name": "lb",
+                    "notify": "buttonChanged",
+                    "override": false,
+                    "read": "lb",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 16,
+                    "lineNumber": 45,
+                    "name": "rb",
+                    "notify": "buttonChanged",
+                    "override": false,
+                    "read": "rb",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 17,
+                    "lineNumber": 46,
+                    "name": "ls",
+                    "notify": "buttonChanged",
+                    "override": false,
+                    "read": "ls",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 18,
+                    "lineNumber": 47,
+                    "name": "rs",
+                    "notify": "buttonChanged",
+                    "override": false,
+                    "read": "rs",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 19,
+                    "lineNumber": 48,
+                    "name": "menuStart",
+                    "notify": "buttonChanged",
+                    "override": false,
+                    "read": "menuStart",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 20,
+                    "lineNumber": 49,
+                    "name": "menuBack",
+                    "notify": "buttonChanged",
+                    "override": false,
+                    "read": "menuBack",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 21,
+                    "lineNumber": 50,
+                    "name": "dUp",
+                    "notify": "buttonChanged",
+                    "override": false,
+                    "read": "dUp",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 22,
+                    "lineNumber": 51,
+                    "name": "dDown",
+                    "notify": "buttonChanged",
+                    "override": false,
+                    "read": "dDown",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 23,
+                    "lineNumber": 52,
+                    "name": "dLeft",
+                    "notify": "buttonChanged",
+                    "override": false,
+                    "read": "dLeft",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 24,
+                    "lineNumber": 53,
+                    "name": "dRight",
+                    "notify": "buttonChanged",
+                    "override": false,
+                    "read": "dRight",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "virtual": false
+                }
+            ],
+            "qualifiedClassName": "GamePadTranslator",
+            "signals": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "index",
+                            "type": "int"
+                        },
+                        {
+                            "name": "name",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "connected",
+                            "type": "bool"
+                        }
+                    ],
+                    "index": 0,
+                    "lineNumber": 103,
+                    "name": "deviceConnected",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "index",
+                            "type": "int"
+                        },
+                        {
+                            "name": "name",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 1,
+                    "lineNumber": 104,
+                    "name": "deviceDisconnected",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "index",
+                            "type": "int"
+                        },
+                        {
+                            "name": "value",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 2,
+                    "lineNumber": 105,
+                    "name": "axisChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "index",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 3,
+                    "lineNumber": 106,
+                    "name": "buttonPressed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "index",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 4,
+                    "lineNumber": 107,
+                    "name": "buttonReleased",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "index",
+                            "type": "int"
+                        },
+                        {
+                            "name": "pressed",
+                            "type": "bool"
+                        }
+                    ],
+                    "index": 5,
+                    "lineNumber": 108,
+                    "name": "buttonChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 6,
+                    "lineNumber": 109,
+                    "name": "anyButtonPressed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 7,
+                    "lineNumber": 110,
+                    "name": "anyButtonReleased",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 8,
+                    "lineNumber": 111,
+                    "name": "faceDownPressed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 9,
+                    "lineNumber": 111,
+                    "name": "faceDownReleased",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 10,
+                    "lineNumber": 112,
+                    "name": "faceRightPressed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 11,
+                    "lineNumber": 112,
+                    "name": "faceRightReleased",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 12,
+                    "lineNumber": 113,
+                    "name": "faceLeftPressed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 13,
+                    "lineNumber": 113,
+                    "name": "faceLeftReleased",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 14,
+                    "lineNumber": 114,
+                    "name": "faceUpPressed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 15,
+                    "lineNumber": 114,
+                    "name": "faceUpReleased",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 16,
+                    "lineNumber": 115,
+                    "name": "lbPressed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 17,
+                    "lineNumber": 115,
+                    "name": "lbReleased",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 18,
+                    "lineNumber": 116,
+                    "name": "rbPressed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 19,
+                    "lineNumber": 116,
+                    "name": "rbReleased",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 20,
+                    "lineNumber": 117,
+                    "name": "lsPressed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 21,
+                    "lineNumber": 117,
+                    "name": "lsReleased",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 22,
+                    "lineNumber": 118,
+                    "name": "rsPressed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 23,
+                    "lineNumber": 118,
+                    "name": "rsReleased",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 24,
+                    "lineNumber": 119,
+                    "name": "menuStartPressed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 25,
+                    "lineNumber": 119,
+                    "name": "menuStartReleased",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 26,
+                    "lineNumber": 120,
+                    "name": "menuBackPressed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 27,
+                    "lineNumber": 120,
+                    "name": "menuBackReleased",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 28,
+                    "lineNumber": 121,
+                    "name": "dUpPressed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 29,
+                    "lineNumber": 121,
+                    "name": "dUpReleased",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 30,
+                    "lineNumber": 122,
+                    "name": "dDownPressed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 31,
+                    "lineNumber": 122,
+                    "name": "dDownReleased",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 32,
+                    "lineNumber": 123,
+                    "name": "dLeftPressed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 33,
+                    "lineNumber": 123,
+                    "name": "dLeftReleased",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 34,
+                    "lineNumber": 124,
+                    "name": "dRightPressed",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 35,
+                    "lineNumber": 124,
+                    "name": "dRightReleased",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "x",
+                            "type": "float"
+                        },
+                        {
+                            "name": "y",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 36,
+                    "lineNumber": 125,
+                    "name": "leftStickMoved",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "x",
+                            "type": "float"
+                        },
+                        {
+                            "name": "y",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 37,
+                    "lineNumber": 126,
+                    "name": "rightStickMoved",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "value",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 38,
+                    "lineNumber": 127,
+                    "name": "leftTriggerMoved",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "value",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 39,
+                    "lineNumber": 128,
+                    "name": "rightTriggerMoved",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "button",
+                            "type": "int"
+                        },
+                        {
+                            "name": "pressed",
+                            "type": "bool"
+                        }
+                    ],
+                    "index": 40,
+                    "lineNumber": 129,
+                    "name": "buttonEvent",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "axis",
+                            "type": "int"
+                        },
+                        {
+                            "name": "value",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 41,
+                    "lineNumber": 130,
+                    "name": "axisEvent",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "GamePadTranslator.hpp",
+    "outputRevision": 69
+}

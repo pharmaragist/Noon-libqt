@@ -1,0 +1,12 @@
+-I
+/home/pharmaracist/Projects/Noon-libqt/build
+-I
+/home/pharmaracist/Projects/Noon-libqt/build/Noon/Protocols
+-I
+/home/pharmaracist/Projects/Noon-libqt/build/src/protocols
+-I
+/usr/lib64/qt6/qml
+--resource
+/home/pharmaracist/Projects/Noon-libqt/build/src/protocols/.qt/rcc/qmake_Noon_Protocols.qrc
+--module
+Noon.Protocols

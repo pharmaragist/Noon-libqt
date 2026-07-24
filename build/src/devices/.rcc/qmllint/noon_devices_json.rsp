@@ -1,0 +1,13 @@
+--bare
+-I
+/home/pharmaracist/Projects/Noon-libqt/build
+-I
+/home/pharmaracist/Projects/Noon-libqt/build/Noon/Devices
+-I
+/home/pharmaracist/Projects/Noon-libqt/build/src/devices
+-I
+/usr/lib64/qt6/qml
+--resource
+/home/pharmaracist/Projects/Noon-libqt/build/src/devices/.qt/rcc/qmake_Noon_Devices.qrc
+--json
+/home/pharmaracist/Projects/Noon-libqt/build/noon_devices_qmllint.json

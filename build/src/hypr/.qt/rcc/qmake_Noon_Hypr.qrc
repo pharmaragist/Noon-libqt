@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/qt/qml/Noon/Hypr">
+    <file alias="qmldir">/home/pharmaracist/Projects/Noon-libqt/build/Noon/Hypr/qmldir</file>
+  </qresource>
+</RCC>
+

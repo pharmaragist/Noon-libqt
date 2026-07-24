@@ -1,0 +1,8 @@
+module Noon.Utils
+linktarget noon_utilsplugin
+optional plugin noon_utilsplugin
+classname Noon_UtilsPlugin
+typeinfo noon_utils.qmltypes
+prefer :/qt/qml/Noon/Utils/
+depends QtQuick
+
