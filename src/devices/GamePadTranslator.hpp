@@ -1,7 +1,7 @@
 #pragma once
-#include <QObject>
+#include "base.hpp"
+
 #include <QTimer>
-#include <QQmlEngine>
 #include <SDL.h>
 
 class GamePadTranslator : public QObject {

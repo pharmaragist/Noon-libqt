@@ -8,3 +8,5 @@ noon_setup(noon_protocols Noon.Protocols
       Qt6::Core
       Qt6::Qml
 )
+
+add_subdirectory(Hypr)

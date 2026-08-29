@@ -1,7 +1,7 @@
 #pragma once
 
-#include <QObject>
-#include <QQmlEngine>
+#include "base.hpp"
+
 #include <QString>
 #include <QJsonArray>
 #include <QJsonObject>

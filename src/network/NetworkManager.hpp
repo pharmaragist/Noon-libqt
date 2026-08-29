@@ -1,10 +1,10 @@
 #pragma once
 
-#include <QObject>
+#include "base.hpp"
+
 #include <QSet>
 #include <QTimer>
 #include <QVariantList>
-#include <QtQml/qqmlregistration.h>
 #include <NetworkManagerQt/WirelessDevice>
 #include <NetworkManagerQt/DeviceStatistics>
 

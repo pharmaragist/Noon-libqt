@@ -8,7 +8,8 @@
 #include <QTimer>
 #include <QFile>
 #include <QSaveFile>
-#include <QtQml/qqmlregistration.h>
+#include "base.hpp"
+
 #include <QtConcurrent/QtConcurrent>
 
 class HyprParser : public QObject {

@@ -1,6 +1,6 @@
 #pragma once
-#include <QObject>
-#include <QString>
+#include "base.hpp"
+
 #include <QByteArray>
 #include <QQmlEngine>
 #include <QJSEngine>

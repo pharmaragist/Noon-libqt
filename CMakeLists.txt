@@ -46,6 +46,8 @@ function(noon_setup target uri)
     SOURCES ${NOON_SOURCES}
   )
 
+  target_include_directories(${target} PRIVATE ${PROJECT_SOURCE_DIR}/src)
+
   if(NOON_LINK)
     target_link_libraries(${target} PRIVATE ${NOON_LINK})
   endif()
