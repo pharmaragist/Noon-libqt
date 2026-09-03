@@ -1,3 +1,6 @@
+option(QRSUPPORT "Compile QR support as the Noon.Utils.Qr QML module" OFF)
+option(NVIDIA "Enable NVIDIA GPU detection support (requires NVML)" OFF)
+
 noon_setup(noon_utils Noon.Utils
     SOURCES
         CavaWatcher.hpp
@@ -9,13 +12,13 @@ noon_setup(noon_utils Noon.Utils
         MpvPlayer.hpp
         TomlParser.hpp
         TaskManager.hpp
-        QrCode.hpp
+        QalcEngine.hpp
     QT_COMPONENTS
         Core Gui Qml Quick Sql Concurrent Widgets Svg
     PACKAGES
         MpvQt
     PKG_CHECK
-        DEPS libdrm sdl2
+        DEPS libdrm sdl2 libqalculate
     LINK
         Qt6::Quick
         Qt6::Sql
@@ -23,9 +26,6 @@ noon_setup(noon_utils Noon.Utils
         Qt6::Widgets
         Qt6::Svg
         MpvQt::MpvQt
-        qtqr
-    INCLUDES
-        ${CMAKE_CURRENT_SOURCE_DIR}/../lib/qtqr/src
 )
 
 if(NVIDIA)
@@ -33,6 +33,10 @@ if(NVIDIA)
     pkg_check_modules(NVML REQUIRED IMPORTED_TARGET GLOBAL nvidia-ml)
     target_link_libraries(noon_utils PRIVATE PkgConfig::NVML)
     target_compile_definitions(noon_utils PRIVATE NVIDIA)
+endif()
+
+if(QRSUPPORT)
+    add_subdirectory(qr)
 endif()
 
 add_subdirectory(latex)

@@ -49,6 +49,7 @@ public:
 #ifdef NVIDIA
         nvmlShutdown();
 #endif
+        if (m_intelFd >= 0) close(m_intelFd);
     }
 
     QVariantMap stats() const { return m_stats; }
@@ -82,6 +83,12 @@ private:
     quint64 m_prevIdle;
     QMap<QString, quint64> m_intelPrevBusyNs;
     QMap<QString, quint64> m_intelPrevTotalNs;
+    QString m_cpuTempFile;
+    double m_cpuTotalFreqGhz = 0.0;
+    bool m_hasCpuTotalFreq = false;
+    int m_intelFd = -1;
+    QString m_intelNode;
+    QString m_intelDriName;
 
     static QVariantMap makeGpuEntry(const QString &vendor, int index, const QString &name)
     {
@@ -166,30 +173,39 @@ private:
         QFile freqFile("/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq");
         if (freqFile.open(QIODevice::ReadOnly | QIODevice::Text))
             cpuFreqGhz = freqFile.readAll().trimmed().toDouble() / 1000000.0;
-        QDir cpuDir("/sys/devices/system/cpu");
-        const QStringList cores = cpuDir.entryList(QStringList("cpu[0-9]*"), QDir::Dirs);
-        double totalKhz = 0.0;
-        for (const QString &core : cores) {
-            QFile f(cpuDir.filePath(core + "/cpufreq/scaling_max_freq"));
-            if (f.open(QIODevice::ReadOnly | QIODevice::Text)) {
-                double khz = f.readAll().trimmed().toDouble();
-                if (khz > 0) totalKhz += khz;
-            }
-        }
-        cpuTotalFreqGhz = totalKhz / 1000000.0;
-        QDir hwmonDir("/sys/class/hwmon");
-        for (const QString &dir : hwmonDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot)) {
-            QString path = "/sys/class/hwmon/" + dir;
-            QFile nf(path + "/name");
-            if (!nf.open(QIODevice::ReadOnly)) continue;
-            QString name = nf.readAll().trimmed();
-            if (name == "coretemp" || name == "k10temp" || name == "cpu_thermal" || name == "soc_thermal") {
-                QFile tf(path + "/temp1_input");
-                if (tf.open(QIODevice::ReadOnly)) {
-                    cpuTemp = tf.readAll().trimmed().toDouble() / 1000.0;
-                    if (cpuTemp > 0) break;
+        if (!m_hasCpuTotalFreq) {
+            QDir cpuDir("/sys/devices/system/cpu");
+            const QStringList cores = cpuDir.entryList(QStringList("cpu[0-9]*"), QDir::Dirs);
+            double totalKhz = 0.0;
+            for (const QString &core : cores) {
+                QFile f(cpuDir.filePath(core + "/cpufreq/scaling_max_freq"));
+                if (f.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                    double khz = f.readAll().trimmed().toDouble();
+                    if (khz > 0) totalKhz += khz;
                 }
             }
+            m_cpuTotalFreqGhz = totalKhz / 1000000.0;
+            m_hasCpuTotalFreq = true;
+        }
+        cpuTotalFreqGhz = m_cpuTotalFreqGhz;
+        // ponytail: max freq & hwmon path are static; resolve once, read each tick.
+        if (m_cpuTempFile.isEmpty()) {
+            QDir hwmonDir("/sys/class/hwmon");
+            for (const QString &dir : hwmonDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot)) {
+                QString path = "/sys/class/hwmon/" + dir;
+                QFile nf(path + "/name");
+                if (!nf.open(QIODevice::ReadOnly)) continue;
+                QString name = nf.readAll().trimmed();
+                if (name == "coretemp" || name == "k10temp" || name == "cpu_thermal" || name == "soc_thermal") {
+                    QFile tf(path + "/temp1_input");
+                    if (tf.exists()) { m_cpuTempFile = path + "/temp1_input"; break; }
+                }
+            }
+        }
+        if (!m_cpuTempFile.isEmpty()) {
+            QFile tf(m_cpuTempFile);
+            if (tf.open(QIODevice::ReadOnly))
+                cpuTemp = tf.readAll().trimmed().toDouble() / 1000.0;
         }
     }
 
@@ -275,8 +291,9 @@ private:
         }
     }
 
-    void readIntelGpuStats(QVariantList &gpus)
+    void openIntelNode()
     {
+        if (m_intelFd >= 0) return;
         QDir driDir("/dev/dri");
         for (const QString &node : driDir.entryList(QStringList("renderD*"), QDir::System | QDir::Files)) {
             int fd = open(("/dev/dri/" + node).toLocal8Bit().constData(), O_RDWR);
@@ -286,46 +303,54 @@ private:
             QString dName = QString::fromLatin1(ver->name, ver->name_len);
             drmFreeVersion(ver);
             if (dName != "i915" && dName != "xe") { close(fd); continue; }
-            QString card = QString("card%1").arg(node.mid(7).toInt() - 128);
-            QString sBase = "/sys/class/drm/" + card + "/device";
-            QVariantMap gpu = makeGpuEntry("intel", gpus.size(), "Intel GPU");
-            if (dName == "i915") {
-                drm_i915_query q = {}; drm_i915_query_item item = {DRM_I915_QUERY_MEMORY_REGIONS};
-                q.num_items = 1; q.items_ptr = reinterpret_cast<__u64>(&item);
-                if (ioctl(fd, DRM_IOCTL_I915_QUERY, &q) == 0 && item.length > 0) {
-                    QByteArray buf(item.length, 0); item.data_ptr = reinterpret_cast<__u64>(buf.data());
-                    if (ioctl(fd, DRM_IOCTL_I915_QUERY, &q) == 0) {
-                        auto *info = reinterpret_cast<drm_i915_query_memory_regions *>(buf.data());
-                        for (quint32 r = 0; r < info->num_regions; ++r) {
-                            const auto &reg = info->regions[r];
-                            if (reg.region.memory_class == I915_MEMORY_CLASS_DEVICE || reg.region.memory_class == I915_MEMORY_CLASS_SYSTEM) {
-                                gpu["memory_total"] = static_cast<double>(reg.probed_size) / 1048576.0;
-                                gpu["memory_used"] = static_cast<double>(reg.probed_size - reg.unallocated_size) / 1048576.0;
-                                if (reg.region.memory_class == I915_MEMORY_CLASS_DEVICE) break;
-                            }
+            m_intelFd = fd; m_intelNode = node; m_intelDriName = dName;
+            return;
+        }
+        // ponytail: first i915/xe node only; multi-GPU Intel unsupported here.
+    }
+
+    void readIntelGpuStats(QVariantList &gpus)
+    {
+        openIntelNode();
+        if (m_intelFd < 0) return;
+        QString card = QString("card%1").arg(m_intelNode.mid(7).toInt() - 128);
+        QString sBase = "/sys/class/drm/" + card + "/device";
+        QVariantMap gpu = makeGpuEntry("intel", gpus.size(), "Intel GPU");
+        if (m_intelDriName == "i915") {
+            drm_i915_query q = {}; drm_i915_query_item item = {DRM_I915_QUERY_MEMORY_REGIONS};
+            q.num_items = 1; q.items_ptr = reinterpret_cast<__u64>(&item);
+            if (ioctl(m_intelFd, DRM_IOCTL_I915_QUERY, &q) == 0 && item.length > 0) {
+                QByteArray buf(item.length, 0); item.data_ptr = reinterpret_cast<__u64>(buf.data());
+                if (ioctl(m_intelFd, DRM_IOCTL_I915_QUERY, &q) == 0) {
+                    auto *info = reinterpret_cast<drm_i915_query_memory_regions *>(buf.data());
+                    for (quint32 r = 0; r < info->num_regions; ++r) {
+                        const auto &reg = info->regions[r];
+                        if (reg.region.memory_class == I915_MEMORY_CLASS_DEVICE || reg.region.memory_class == I915_MEMORY_CLASS_SYSTEM) {
+                            gpu["memory_total"] = static_cast<double>(reg.probed_size) / 1048576.0;
+                            gpu["memory_used"] = static_cast<double>(reg.probed_size - reg.unallocated_size) / 1048576.0;
+                            if (reg.region.memory_class == I915_MEMORY_CLASS_DEVICE) break;
                         }
                     }
                 }
             }
-            close(fd);
-            QDir hwb(sBase + "/hwmon");
-            for (const QString &hw : hwb.entryList(QStringList("hwmon*"), QDir::Dirs)) {
-                QFile tf(sBase + "/hwmon/" + hw + "/temp1_input");
-                if (tf.open(QIODevice::ReadOnly)) gpu["temperature"] = tf.readAll().trimmed().toDouble() / 1000.0;
-                QFile pf(sBase + "/hwmon/" + hw + "/power1_input");
-                if (pf.open(QIODevice::ReadOnly)) gpu["power_draw"] = pf.readAll().trimmed().toDouble() / 1000000.0;
-            }
-            double bD = 0, aD = 0;
-            for (const QString &eng : QStringList{"rcs0", "vcs0", "bcs0"}) {
-                QFile bf(sBase + "/engine/" + eng + "/busy"), af(sBase + "/engine/" + eng + "/active");
-                if (!bf.open(QIODevice::ReadOnly)) continue;
-                quint64 bNs = bf.readAll().trimmed().toULongLong(), aNs = af.open(QIODevice::ReadOnly) ? af.readAll().trimmed().toULongLong() : 0;
-                QString key = card + "/" + eng;
-                if (m_intelPrevBusyNs.contains(key)) { bD += (bNs - m_intelPrevBusyNs[key]); aD += (aNs - m_intelPrevTotalNs[key]); }
-                m_intelPrevBusyNs[key] = bNs; m_intelPrevTotalNs[key] = aNs;
-            }
-            if (aD > 0) gpu["utilization"] = 100.0 * bD / aD;
-            gpus.append(gpu);
         }
+        QDir hwb(sBase + "/hwmon");
+        for (const QString &hw : hwb.entryList(QStringList("hwmon*"), QDir::Dirs)) {
+            QFile tf(sBase + "/hwmon/" + hw + "/temp1_input");
+            if (tf.open(QIODevice::ReadOnly)) gpu["temperature"] = tf.readAll().trimmed().toDouble() / 1000.0;
+            QFile pf(sBase + "/hwmon/" + hw + "/power1_input");
+            if (pf.open(QIODevice::ReadOnly)) gpu["power_draw"] = pf.readAll().trimmed().toDouble() / 1000000.0;
+        }
+        double bD = 0, aD = 0;
+        for (const QString &eng : QStringList{"rcs0", "vcs0", "bcs0"}) {
+            QFile bf(sBase + "/engine/" + eng + "/busy"), af(sBase + "/engine/" + eng + "/active");
+            if (!bf.open(QIODevice::ReadOnly)) continue;
+            quint64 bNs = bf.readAll().trimmed().toULongLong(), aNs = af.open(QIODevice::ReadOnly) ? af.readAll().trimmed().toULongLong() : 0;
+            QString key = card + "/" + eng;
+            if (m_intelPrevBusyNs.contains(key)) { bD += (bNs - m_intelPrevBusyNs[key]); aD += (aNs - m_intelPrevTotalNs[key]); }
+            m_intelPrevBusyNs[key] = bNs; m_intelPrevTotalNs[key] = aNs;
+        }
+        if (aD > 0) gpu["utilization"] = 100.0 * bD / aD;
+        gpus.append(gpu);
     }
 };

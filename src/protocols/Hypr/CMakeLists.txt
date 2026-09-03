@@ -1,6 +1,6 @@
 noon_setup(noon_protocols_hypr Noon.Protocols.Hypr
     SOURCES
-      NightLightManager.hpp
+      NightLightManager.cpp
       hyprland-ctm-control-v1.cpp
     QT_COMPONENTS
       Core Qml

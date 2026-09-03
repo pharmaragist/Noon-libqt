@@ -1,38 +1,19 @@
 /*
- * Copyright (c) 2023 Alex Spataru <https://github.com/alex-spataru>
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
+ * QR code generation for Noon.Utils.Qr.
+ * Qt wrapper derived from QrCodeGenerator by Alex Spataru (MIT).
+ * Encoding core: vendored Project Nayuki qrcodegen (see qrcodegen/qrcodegen.h).
  */
-
 #pragma once
 
 #include <QImage>
 #include <QObject>
+#include <QPainter>
 #include <QString>
+#include <QtQml/qqmlregistration.h>
+#include <QtQuick/QQuickPaintedItem>
 
-#include "qrcodegen/qrcodegen.h"
+#include "qrcodegen.h"
 
-/**
- * @class QrCodeGenerator
- * @brief The QrCodeGenerator class is a simple C++ class that uses the
- * qrcodegen library to generate QR codes from QStrings in Qt applications.
- */
 class QrCodeGenerator : public QObject
 {
 public:
@@ -108,4 +89,40 @@ private:
    */
   QImage qrCodeToImage(const qrcodegen::QrCode &qrCode, quint16 border,
                        const quint16 size) const;
+};
+
+class QrCode : public QQuickPaintedItem {
+    Q_OBJECT
+    QML_ELEMENT
+    Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
+
+public:
+    explicit QrCode(QQuickItem *parent = nullptr)
+        : QQuickPaintedItem(parent) {}
+
+    QString text() const { return m_text; }
+
+    void setText(const QString &t) {
+        if (m_text != t) {
+            m_text = t;
+            QrCodeGenerator gen;
+            m_img = gen.generateQr(m_text);
+            update();
+            emit textChanged();
+        }
+    }
+
+    void paint(QPainter *painter) override {
+        if (m_img.isNull()) return;
+        painter->setRenderHint(QPainter::Antialiasing, false);
+        painter->setRenderHint(QPainter::SmoothPixmapTransform, false);
+        painter->drawImage(boundingRect(), m_img);
+    }
+
+signals:
+    void textChanged();
+
+private:
+    QString m_text;
+    QImage m_img;
 };

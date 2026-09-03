@@ -15,7 +15,6 @@ find_package(ECM REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_MODULE_PATH})
 
 include(GNUInstallDirs)
-option(NVIDIA "Enable NVIDIA GPU support (requires NVML)" OFF)
 
 if(NOT QML_INSTALL_DIR)
   set(QML_INSTALL_DIR "${QT6_INSTALL_PREFIX}/${QT6_INSTALL_QML}" CACHE PATH "QML module install dir")

@@ -33,6 +33,15 @@ public:
         const QString p = path.startsWith("file://") ? QUrl(path).toLocalFile() : path;
         if (m_path != p) { m_path = p; if (!QFile::exists(p)) { QFile f(p); if (!f.open(QIODevice::WriteOnly)) return; f.close(); } m_watcher.addPath(p); load(); emit pathChanged(); } }
     QQmlPropertyMap *data() const { return m_data; }
+    // ponytail: `new` is a C++/QML keyword; this method's semantics match the ask (insert if absent).
+    Q_INVOKABLE void ensure(const QString &key, const QString &value)
+    {
+        QString k = key;
+        if (k != k.toUpper()) k = k.toLower();
+        if (m_data->contains(k)) return;
+        bool ok; double n = value.toDouble(&ok);
+        m_data->insert(k, ok ? QVariant(n) : QVariant(value));
+    }
 
 signals:
     void pathChanged();
