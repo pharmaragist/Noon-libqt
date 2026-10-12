@@ -8,7 +8,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core Gui Qml Quick Sql Concurrent Widgets Svg Network)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Core Gui Qml Quick Sql Concurrent Widgets Svg Network Multimedia)
 qt_standard_project_setup(REQUIRES 6.5)
 
 find_package(ECM REQUIRED NO_MODULE)
@@ -31,7 +31,8 @@ function(noon_setup target uri)
 
   if(NOON_PKG_CHECK)
     find_package(PkgConfig REQUIRED)
-    list(POP_FRONT NOON_PKG_CHECK _pkg_prefix)
+    list(GET NOON_PKG_CHECK 0 _pkg_prefix)
+    list(REMOVE_AT NOON_PKG_CHECK 0)
     pkg_check_modules(${_pkg_prefix} REQUIRED IMPORTED_TARGET GLOBAL ${NOON_PKG_CHECK})
     list(APPEND NOON_LINK PkgConfig::${_pkg_prefix})
   endif()
@@ -63,5 +64,19 @@ function(noon_setup target uri)
   qt_query_qml_module(${target} QMLDIR _qmldir TYPEINFO _typeinfo)
   install(FILES ${_qmldir} ${_typeinfo} DESTINATION "${QML_INSTALL_DIR}/${uri_path}")
 endfunction()
+
+option(SCRCPY "Enable Scrcpy for phone mirror support" ON)
+
+if(SCRCPY)
+  include(FetchContent)
+  set(TINYQTSCRCPY_REPOSITORY "git@github.com:pharmaragist/TinyQtScrcpy.git"
+      CACHE STRING "TinyQtScrcpy git repository")
+  set(TINYQTSCRCPY_TAG "main" CACHE STRING "TinyQtScrcpy git tag or commit")
+  FetchContent_Declare(TinyQtScrcpy
+    GIT_REPOSITORY "${TINYQTSCRCPY_REPOSITORY}"
+    GIT_TAG "${TINYQTSCRCPY_TAG}"
+  )
+  FetchContent_MakeAvailable(TinyQtScrcpy)
+endif()
 
 add_subdirectory(src)

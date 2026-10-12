@@ -6,7 +6,6 @@ noon_setup(noon_utils Noon.Utils
         CavaWatcher.hpp
         ResourcesWatcher.hpp
         FileSystemWatcher.hpp
-        SQLReader.hpp
         QMLCrawler.hpp
         EnvManager.hpp
         MpvPlayer.hpp
@@ -14,14 +13,13 @@ noon_setup(noon_utils Noon.Utils
         TaskManager.hpp
         QalcEngine.hpp
     QT_COMPONENTS
-        Core Gui Qml Quick Sql Concurrent Widgets Svg
+        Core Gui Qml Quick Concurrent Widgets Svg
     PACKAGES
         MpvQt
     PKG_CHECK
         DEPS libdrm sdl2 libqalculate
     LINK
         Qt6::Quick
-        Qt6::Sql
         Qt6::Concurrent
         Qt6::Widgets
         Qt6::Svg
@@ -40,4 +38,3 @@ if(QRSUPPORT)
 endif()
 
 add_subdirectory(latex)
-add_subdirectory(dialogs)
